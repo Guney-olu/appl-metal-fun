@@ -1,0 +1,93 @@
+client:
+  name: basic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "PyMetalBridge-release.dylib": ["<PyMetalBridge-release.dylib>"]
+  "PyMetalBridge-release.module": ["<PyMetalBridge-release.module>"]
+  "PyMetalBridgePackageTests-release.test": ["<PyMetalBridgePackageTests-release.test>"]
+  "PyMetalBridgeTests-release.module": ["<PyMetalBridgeTests-release.module>"]
+  "main": ["<PyMetalBridge-release.dylib>","<PyMetalBridge-release.module>"]
+  "test": ["<PyMetalBridge-release.dylib>","<PyMetalBridge-release.module>","<PyMetalBridgePackageTests-release.test>","<PyMetalBridgeTests-release.module>"]
+default: "main"
+nodes:
+  "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Sources/PyMetalBridge/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Tests/PyMetalBridgeTests/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "<PyMetalBridge-release.dylib>":
+    tool: phony
+    inputs: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/libPyMetalBridge.dylib"]
+    outputs: ["<PyMetalBridge-release.dylib>"]
+
+  "<PyMetalBridge-release.module>":
+    tool: phony
+    inputs: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build/PyMetalBridge.swift.o","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.swiftmodule"]
+    outputs: ["<PyMetalBridge-release.module>"]
+
+  "<PyMetalBridgePackageTests-release.test>":
+    tool: phony
+    inputs: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgePackageTests.xctest/Contents/MacOS/PyMetalBridgePackageTests"]
+    outputs: ["<PyMetalBridgePackageTests-release.test>"]
+
+  "<PyMetalBridgeTests-release.module>":
+    tool: phony
+    inputs: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgeTests.build/PyMetalBridgeTests.swift.o","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgeTests.build/XCTestManifests.swift.o","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgeTests.swiftmodule"]
+    outputs: ["<PyMetalBridgeTests-release.module>"]
+
+  "C.PyMetalBridge-release.dylib":
+    tool: shell
+    inputs: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build/PyMetalBridge.swift.o"]
+    outputs: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/libPyMetalBridge.dylib"]
+    description: "Linking ./.build/x86_64-apple-macosx/release/libPyMetalBridge.dylib"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-g","-L","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release","-o","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/libPyMetalBridge.dylib","-module-name","PyMetalBridge","-emit-library","-Xlinker","-install_name","-Xlinker","@rpath/libPyMetalBridge.dylib","-Xlinker","-dead_strip","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.5/macosx","-target","x86_64-apple-macosx10.13","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib"]
+
+  "C.PyMetalBridge-release.module":
+    tool: swift-compiler
+    inputs: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Sources/PyMetalBridge/PyMetalBridge.swift"]
+    outputs: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build/PyMetalBridge.swift.o","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.swiftmodule"]
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "PyMetalBridge"
+    module-output-path: "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.swiftmodule"
+    import-paths: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release"]
+    temps-path: "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build"
+    objects: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build/PyMetalBridge.swift.o"]
+    other-args: ["-target","x86_64-apple-macosx10.13","-swift-version","5","-O","-g","-j4","-DSWIFT_PACKAGE","-module-cache-path","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build/PyMetalBridge-Swift.h","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC"]
+    sources: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Sources/PyMetalBridge/PyMetalBridge.swift"]
+    is-library: true
+    enable-whole-module-optimization: true
+    num-threads: 4
+
+  "C.PyMetalBridgePackageTests-release.test":
+    tool: shell
+    inputs: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build/PyMetalBridge.swift.o","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgeTests.build/PyMetalBridgeTests.swift.o","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgeTests.build/XCTestManifests.swift.o"]
+    outputs: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgePackageTests.xctest/Contents/MacOS/PyMetalBridgePackageTests"]
+    description: "Linking ./.build/x86_64-apple-macosx/release/PyMetalBridgePackageTests.xctest/Contents/MacOS/PyMetalBridgePackageTests"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-g","-L","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release","-o","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgePackageTests.xctest/Contents/MacOS/PyMetalBridgePackageTests","-module-name","PyMetalBridgePackageTests","-Xlinker","-bundle","-Xlinker","-dead_strip","-Xlinker","-rpath","-Xlinker","@loader_path/../../../","@/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgePackageTests.product/Objects.LinkFileList","-target","x86_64-apple-macosx13.0","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib"]
+
+  "C.PyMetalBridgeTests-release.module":
+    tool: swift-compiler
+    inputs: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Tests/PyMetalBridgeTests/PyMetalBridgeTests.swift","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Tests/PyMetalBridgeTests/XCTestManifests.swift","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.swiftmodule"]
+    outputs: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgeTests.build/PyMetalBridgeTests.swift.o","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgeTests.build/XCTestManifests.swift.o","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgeTests.swiftmodule"]
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "PyMetalBridgeTests"
+    module-output-path: "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgeTests.swiftmodule"
+    import-paths: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release"]
+    temps-path: "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgeTests.build"
+    objects: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgeTests.build/PyMetalBridgeTests.swift.o","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridgeTests.build/XCTestManifests.swift.o"]
+    other-args: ["-target","x86_64-apple-macosx13.0","-swift-version","5","-index-store-path","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/index/store","-O","-enable-testing","-g","-j4","-DSWIFT_PACKAGE","-module-cache-path","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/ModuleCache","-parseable-output","-parse-as-library","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC"]
+    sources: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Tests/PyMetalBridgeTests/PyMetalBridgeTests.swift","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Tests/PyMetalBridgeTests/XCTestManifests.swift"]
+    is-library: true
+    enable-whole-module-optimization: true
+    num-threads: 4
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Sources/PyMetalBridge/","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Tests/PyMetalBridgeTests/","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Package.swift","/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

@@ -1,0 +1,12 @@
+{
+  "": {
+    "dependencies": "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build/PyMetalBridge.d",
+    "object": "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build/PyMetalBridge.o",
+    "swift-dependencies": "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build/master.swiftdeps"
+  },
+  "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Sources/PyMetalBridge/PyMetalBridge.swift": {
+    "object": "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build/PyMetalBridge.swift.o",
+    "swiftmodule": "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build/PyMetalBridge~partial.swiftmodule",
+    "swift-dependencies": "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build/PyMetalBridge.swiftdeps"
+  }
+}

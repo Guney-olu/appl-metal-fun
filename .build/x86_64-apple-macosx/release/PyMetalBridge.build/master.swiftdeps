@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "3cc42b37f1c065f60c28253aea13519d4e5e913d93df9c20fcc6c8c6e53ca44e"
+build_start_time: [1721900623, 510953000]
+build_end_time: [1721900632, 226641000]
+inputs:
+  "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/Sources/PyMetalBridge/PyMetalBridge.swift": [1721900408, 842120263]

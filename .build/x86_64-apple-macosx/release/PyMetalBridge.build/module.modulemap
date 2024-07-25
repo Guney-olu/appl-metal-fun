@@ -1,0 +1,4 @@
+module PyMetalBridge {
+    header "/Users/aryanrajpurohit/stream/appl-metal-fun/python-metal-benchmark/PyMetalBridge/.build/x86_64-apple-macosx/release/PyMetalBridge.build/PyMetalBridge-Swift.h"
+    requires objc
+}
