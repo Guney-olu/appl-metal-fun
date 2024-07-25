@@ -3,9 +3,10 @@ import numpy as np
 import os
 cwd = os.getcwd()
 
-lib = cwd + "/.build/release/libPyMetalBridge.dylib"
+lib = cwd + "/PyMetalBridge/.build/release/libPyMetalBridge.dylib"
 
-swift_fun = ctypes.CDLL(lib)
+
+swift_fun = ctypes.CDLL("/Users/aryanrajpurohit/stream/appl-metal-fun/package/PyMetalBridge/.build/release/libPyMetalBridge.dylib")
 swift_fun.swift_sigmoid_on_gpu.argtypes = [
 	ctypes.POINTER(ctypes.c_float),
 	ctypes.POINTER(ctypes.c_float),
